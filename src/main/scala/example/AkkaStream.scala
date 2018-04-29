@@ -11,7 +11,7 @@ import scala.concurrent._
 import scala.concurrent.duration._
 import java.nio.file.Paths
 
-object Main extends App {
+object Stream extends App {
   implicit val system = ActorSystem("QuickStart")
   implicit val materializer = ActorMaterializer()
   implicit val ec = system.dispatcher

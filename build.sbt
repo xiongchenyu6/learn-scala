@@ -13,7 +13,7 @@ settings(
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "org.scalaz" %% "scalaz-effect" % scalazVersion,
       "org.scalaz" %% "scalaz-typelevel" % scalazVersion,
-      "org.scalaz" %% "scalaz-scalacheck-binding" % scalazVersion % "test",
+      "org.scalaz" %% "scalaz-scalacheck-binding" % scalazVersion % "test"
       scalaTest % Test,
       "com.typesafe.akka" %% "akka-stream" % "2.5.11"
     )
