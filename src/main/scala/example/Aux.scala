@@ -1,31 +1,35 @@
+import scala.language.higherKinds
 import scalaz._
 import Scalaz._
 
 object console extends App {
 
-  trait Foo[A] {
-    type B
-    def value: B
+  trait Apart[F]{
+    type T
+    type W[X]
+
+    def apply(f: F): W[T]
   }
 
-  object Foo {
-    type Aux[A0, B0] = Foo[A0] { type B = B0 }
+  object Apart {
+    def apply[F](implicit apart: Apart[F]) = apart
 
-    implicit def fi = new Foo[Int] {
-      type B = String
-      val value = "Foo"
-    }
-    implicit def fs = new Foo[String] {
-      type B = Boolean
-      val value = false
-    }
+    type Aux[FA, F[_], A] = Apart[FA]{ type T = A; type W[X] = F[X]  }
 
+    implicit def mk[F[_], R]: Aux[F[R], F, R] = new Apart[F[R]]{
+      type T = R
+      type W[X] = F[X]
+
+      def apply(f: F[R]): W[T] = f
+    }
   }
 
-  def ciao[T, R](t: T)
-          (implicit f: Foo.Aux[T, R],
-        //   m: Monoid[R]): R = f.value
-           m: Monoid[R]): f.B = f.value
-  val res = ciao(2)
-  println(s"res: ${res}")
+  def mapZero[Thing, F[_], A](thing: Thing)
+             (implicit apart: Apart.Aux[Thing, F, A],
+              f: Functor[F],
+              m: Monoid[A]): F[A] =
+    f.map(apart(thing))(_ => m.zero)
+    // Equal to apart(thing).map(_ ⇒ m.zero) fix error
+
+  mapZero(Option(List("dsf")))
 }

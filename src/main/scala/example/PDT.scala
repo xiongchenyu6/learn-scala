@@ -8,6 +8,6 @@ class A {
 object PDA extends App {
   val a1 = new A
   val a2 = new A
-  a2.f(new a1.B)
+//  a2.f(new a1.B) won't compile
   a2.g(new a1.B)
 }
