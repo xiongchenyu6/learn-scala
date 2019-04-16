@@ -1,4 +1,4 @@
-import scala.language.implicitConversions
+package example
 
 trait CsvWriter[A] {
 

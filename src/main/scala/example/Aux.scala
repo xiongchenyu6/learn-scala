@@ -1,8 +1,8 @@
-import scala.language.higherKinds
-import scalaz._
-import Scalaz._
+package example
+import cats._
+import cats.instances.all._
 
-object console extends App {
+object Console extends App {
 
   trait Apart[F]{
     type T
@@ -28,8 +28,8 @@ object console extends App {
              (implicit apart: Apart.Aux[Thing, F, A],
               f: Functor[F],
               m: Monoid[A]): F[A] =
-    f.map(apart(thing))(_ => m.zero)
+    f.map(apart(thing))(_ =>  m.empty)
     // Equal to apart(thing).map(_ ⇒ m.zero) fix error
 
-  mapZero(Option(List("dsf")))
-}
+  println(mapZero(Option(List("dsf")))
+)}

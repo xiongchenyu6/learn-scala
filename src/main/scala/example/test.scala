@@ -1,4 +1,5 @@
-package throwaway
+package example
+
 import cats.{Id, ~>}
 import cats.free.Free
 import cats.free.Free.liftF
@@ -6,7 +7,8 @@ import cats.free.Free.liftF
 import scala.collection.mutable
 import scala.concurrent.Future
 
-object test extends App {
+object Test extends App {
+
   sealed trait KVStoreA[A]
   case class Put[T](key: String, value: T) extends KVStoreA[Unit]
   case class Get[T](key: String) extends KVStoreA[Option[T]]

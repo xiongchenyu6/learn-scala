@@ -1,6 +1,7 @@
+package example
+
 class A {
   class B
-
   def f(b: B) = println("Got my B!")
   def g(b: A#B) = println("Got a B.")
 }

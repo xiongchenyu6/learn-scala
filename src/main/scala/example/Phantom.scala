@@ -1,3 +1,4 @@
+package example
 
 object Phantom {
   trait Status

@@ -30,8 +30,8 @@ class WatchActor extends Actor {
   var lastSender = context.system.deadLetters
 
   def receive = {
-    case "kill" ⇒
+    case "kill" =>
       context.stop(child); lastSender = sender()
-    case Terminated(`child`) ⇒ lastSender ! "finished"
+    case Terminated(`child`) => lastSender ! "finished"
   }
 }
