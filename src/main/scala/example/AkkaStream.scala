@@ -12,11 +12,11 @@ import scala.concurrent.duration._
 import java.nio.file.Paths
 
 object Stream extends App {
-  implicit val system = ActorSystem("QuickStart")
-  implicit val materializer = ActorMaterializer()
-  implicit val ec = system.dispatcher
+  implicit lazy val system = ActorSystem("QuickStart")
+  implicit lazy val materializer = ActorMaterializer()
+  implicit lazy val ec = system.dispatcher
 
-  val g = RunnableGraph.fromGraph(GraphDSL.create() {
+  lazy val g = RunnableGraph.fromGraph(GraphDSL.create() {
     implicit builder: GraphDSL.Builder[NotUsed] =>
       import GraphDSL.Implicits._
       val in = Source(1 to 10)

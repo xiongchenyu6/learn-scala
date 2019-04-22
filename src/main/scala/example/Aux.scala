@@ -30,6 +30,7 @@ object Console extends App {
               m: Monoid[A]): F[A] =
     f.map(apart(thing))(_ =>  m.empty)
     // Equal to apart(thing).map(_ ⇒ m.zero) fix error
+  val a = mapZero(Option(List("dsf")))
 
-  println(mapZero(Option(List("dsf")))
-)}
+  println(a)
+}
