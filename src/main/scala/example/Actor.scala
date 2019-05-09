@@ -1,14 +1,15 @@
 package example
 
-import akka.actor.{ Actor, Props, ActorSystem }
-import akka.actor.{ Actor, Props, Terminated }
+import akka.actor.{Actor, Props, ActorSystem}
+import akka.actor.{Actor, Props, Terminated}
 import scala.io.StdIn
 
 class PrintMyActorRefActor extends Actor {
   override def receive: Receive = {
     case "printit" ⇒
       val secondRef = context.actorOf(Props.empty, "second-actor")
-      println(s"Second: $secondRef") }
+      println(s"Second: $secondRef")
+  }
 }
 
 object ActorHierarchyExperiments extends App {
@@ -22,7 +23,6 @@ object ActorHierarchyExperiments extends App {
   try StdIn.readLine()
   finally system.terminate()
 }
-
 
 class WatchActor extends Actor {
   val child = context.actorOf(Props.empty, "child")

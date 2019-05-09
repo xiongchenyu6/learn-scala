@@ -4,7 +4,7 @@ import shapeless._
 
 object CaseClassMerge extends App {
 
-  case class Apple(name : String, price : Double, quantity : Int)
+  case class Apple(name: String, price: Double, quantity: Int)
 
   val gen = LabelledGeneric[Apple]
 

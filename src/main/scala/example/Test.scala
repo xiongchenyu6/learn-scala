@@ -11,8 +11,8 @@ object Test extends App {
 
   sealed trait KVStoreA[A]
   case class Put[T](key: String, value: T) extends KVStoreA[Unit]
-  case class Get[T](key: String) extends KVStoreA[Option[T]]
-  case class Delete(key: String) extends KVStoreA[Unit]
+  case class Get[T](key: String)           extends KVStoreA[Option[T]]
+  case class Delete(key: String)           extends KVStoreA[Unit]
 
   type KVStore[A] = Free[KVStoreA, A]
 
@@ -32,7 +32,7 @@ object Test extends App {
   def update[T](key: String, f: T => T): KVStore[Unit] =
     for {
       vMaybe <- get[T](key)
-      _ <- vMaybe.map(v => put[T](key, f(v))).getOrElse(Free.pure(()))
+      _      <- vMaybe.map(v => put[T](key, f(v))).getOrElse(Free.pure(()))
     } yield ()
 
   def program: KVStore[Option[Int]] =

@@ -7,7 +7,7 @@ object Random extends IOApp {
 
   def run(args: List[String]): IO[ExitCode] = {
     val launchMissiles: IO[String] = IO.raiseError(new Exception("boom!"))
-    val runToBunker: IO[Unit] = IO(println("To the bunker!!!"))
+    val runToBunker: IO[Unit]      = IO(println("To the bunker!!!"))
 
     (for {
 
