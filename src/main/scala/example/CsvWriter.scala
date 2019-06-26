@@ -26,7 +26,7 @@ object CsvWriter {
     }
   }
 
-  implicit val bookToCsvString: CsvWriter[Book] = book ⇒ book.isbn ++ ", " ++ book.author
+  implicit val bookToCsvString: CsvWriter[Book] = book => book.isbn ++ ", " ++ book.author
 }
 
 trait CsvFormatter[A] {
@@ -64,7 +64,7 @@ object CSVmain extends App {
     println(b.writeCsv)
     println(f)
     val c                               = Cat("Yellow")
-    implicit val catCsv: CsvWriter[Cat] = cat ⇒ s"cat ${cat.color}"
+    implicit val catCsv: CsvWriter[Cat] = cat => s"cat ${cat.color}"
     println(c.toCsvString)
   }
 

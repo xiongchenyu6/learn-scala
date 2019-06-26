@@ -2,7 +2,7 @@ package example
 import cats._
 import cats.instances.all._
 
-object Console extends App {
+object Aux extends App {
 
   trait Apart[F] {
     type T

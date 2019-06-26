@@ -1,17 +1,15 @@
 package example
 
-import shapeless._
+import shapeless.{Witness, _}
+import shapeless.labelled.{FieldType, field}
 import shapeless.ops.hlist.IsHCons
 import shapeless.syntax.singleton._
-import shapeless.labelled.{KeyTag, FieldType}
-import shapeless.labelled.field
-import shapeless.Witness
 
 object Generi {
 
   case class Employee(name: String, number: Int, manager: Boolean)
 
-  sealed trait Tree[A]
+  sealed trait Tree[_]
   object CsvEncoder {
     // "Summoner" method
     def apply[A](implicit enc: CsvEncoder[A]): CsvEncoder[A] =
@@ -162,5 +160,3 @@ object Generi {
   getFieldValue(numCherries)
 
 }
-
-import Generi._

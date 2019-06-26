@@ -1,11 +1,5 @@
 package example
 
-import cats._
-import cats.syntax.all._
-import cats.instances.all._
-import cats.implicits._
-import cats.data._
-
 object Saaaaa extends App {
 
   // (((_: Int) * 3) map {_ + 100}) (1)

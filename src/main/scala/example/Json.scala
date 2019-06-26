@@ -44,7 +44,7 @@ object Json {
 
   case class IceCream(name: String, numCherries: Int, inCone: Boolean)
 
-  val iceCream = IceCream("Sundae", 1, false)
+  val iceCream = IceCream("Sundae", 1, inCone = false)
 
   val gen = LabelledGeneric[IceCream].to(iceCream)
 

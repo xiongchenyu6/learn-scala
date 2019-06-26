@@ -1,15 +1,15 @@
 package example
 
-import java.util.concurrent.atomic._
 import java.util.concurrent.ConcurrentHashMap
+
+import scala.jdk.CollectionConverters._
 import scala.collection.concurrent.TrieMap
 import scala.concurrent.ExecutionContext
-import scala.collection.JavaConverters._
 
 object CocurrentVsTrie extends App {
 
-  def execute(body: => Unit) = ExecutionContext.global.execute(
-    new Runnable { def run() = body }
+  def execute(body: => Unit): Unit = ExecutionContext.global.execute(
+    new Runnable { def run(): Unit = body }
   )
   val names = new ConcurrentHashMap[String, Int]().asScala
   names("Johnny") = 0; names("Jane") = 0; names("Jack") = 0

@@ -3,8 +3,8 @@ import java.util.concurrent.atomic._
 import scala.concurrent.ExecutionContext
 
 object AtomicLock extends App {
-  def execute(body: => Unit) = ExecutionContext.global.execute(
-    new Runnable { def run() = body }
+  def execute(body: => Unit): Unit = ExecutionContext.global.execute(
+    () => body
   )
   private val lock = new AtomicBoolean(false)
   def mySynchronized(body: => Unit): Unit = {
@@ -13,7 +13,7 @@ object AtomicLock extends App {
     finally lock.set(false)
   }
   var count = 0
-  for (i <- 0 until 10) execute { mySynchronized { count += 1 } }
+  for (_ <- 0 until 10) execute { mySynchronized { count += 1 } }
   Thread.sleep(1000)
   println(s"Count is: $count")
 }

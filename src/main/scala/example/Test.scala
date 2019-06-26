@@ -38,7 +38,7 @@ object Test extends App {
   def program: KVStore[Option[Int]] =
     for {
       _ <- put("wild-cats", 2)
-      _ <- update[Int]("wild-cats", (_ + 12))
+      _ <- update[Int]("wild-cats", _ + 12)
       _ <- put("tame-cats", 5)
       n <- get[Int]("wild-cats")
       _ <- delete("tame-cats")
@@ -92,4 +92,5 @@ object Test extends App {
   import scala.concurrent.ExecutionContext.Implicits.global
   import cats.instances.future._
   val result: Future[Option[Int]] = program.foldMap(futureCompiler)
+  println(result)
 }
