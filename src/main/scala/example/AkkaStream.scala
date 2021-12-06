@@ -5,7 +5,7 @@ import akka.actor.ActorSystem
 import akka.stream._
 import akka.stream.scaladsl._
 
-object Stream extends App {
+object AkkaStream extends App {
   implicit lazy val system       = ActorSystem("QuickStart")
   implicit lazy val materializer = ActorMaterializer()
   implicit lazy val ec           = system.dispatcher
