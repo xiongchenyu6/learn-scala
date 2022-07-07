@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "scala",
+            "request": "launch",
+            "name": "debug: learn-scala",
+            "mainClass": "example.PDT",
+            "class": "example.PDT",
+            "buildTarget": "PDT",
+            "cwd": "${workspaceFolder}",
+            "path": "src/main/scala/example/PDT.scala",
+            "runType": "run",
+            "args": [
+                "bar"
+            ],
+            "jvmOptions": [
+                "-Dpropert=123"
+            ]
+        }
+    ]
+}
