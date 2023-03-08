@@ -12,13 +12,13 @@ object Phantom extends App {
   object Door {
     def apply[S <: Status] = new Door[S] {}
 
-    // def opens[S <: Status](d: Door[S]) = {
+     def opens[S <: Status](d: Door[S]) = {
 
-    //   if (d.isInstanceOf[Door[Open]]) {
+       if (d.isInstanceOf[Door[Open]]) {
 
-    //     println("error")
-    //   }
-    // }
+         println("error")
+       }
+     }
     def open[S <: Closed](d: Door[S]) = Door[Open]
     def close[S <: Open](d: Door[S])  = Door[Closed]
   }
@@ -27,7 +27,7 @@ object Phantom extends App {
   val openDoor        = Door.open(closedDoor)
   val closedAgainDoor = Door.close(openDoor)
 
-  val closedClosedDoor = Door.close(closedDoor)
-  // val openOpenDoor = Door.open(openDoor)
+  // val closedClosedDoor = Door.close(closedDoor)
+   val openOpenDoor = Door.open(closedDoor)
 
 }

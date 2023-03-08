@@ -6,4 +6,5 @@ object ThreadPool extends App:
   executor.execute(new Runnable {
     def run() = println("This task is run asynchronously.")
   })
+
   Thread.sleep(500)

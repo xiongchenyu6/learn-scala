@@ -31,5 +31,3 @@ ThisBuild / resolvers ++= Seq(
   Resolver.mavenLocal, // Search local maven first for dev
   Resolver.sonatypeRepo("snapshots")
 )
-
-scalafmtOnCompile := true
